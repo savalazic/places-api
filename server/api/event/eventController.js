@@ -3,7 +3,7 @@ var _ = require('lodash');
 
 exports.params = function (req, res, next, id) {
   Event.findById(id)
-    .populate('place', 'name')
+    .populate('place')
     .exec()
     .then(function (event) {
       if (!event) {
