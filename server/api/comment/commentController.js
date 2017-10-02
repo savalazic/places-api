@@ -3,7 +3,7 @@ var _ = require('lodash');
 
 exports.params = function (req, res, next, id) {
   Comment.findById(id)
-    .populate('place', 'name')
+    .populate('user')
     .exec()
     .then(function (comment) {
       if (!comment) {
@@ -19,7 +19,7 @@ exports.params = function (req, res, next, id) {
 
 exports.get = function (req, res, next) {
   Comment.find({})
-    .populate('place')
+    .populate('user')
     .exec()
     .then(function (comments) {
       res.json(comments);

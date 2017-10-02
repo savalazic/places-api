@@ -34,7 +34,7 @@ var PlaceSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'category'
   },
-  comments: [
+  comment: [
     {
       type: Schema.Types.ObjectId,
       ref: 'comment'
