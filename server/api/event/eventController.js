@@ -1,9 +1,16 @@
 var Event = require('./eventModel');
+var Category = require('../category/categoryModel');
 var _ = require('lodash');
 
 exports.params = function (req, res, next, id) {
   Event.findById(id)
-    .populate('place')
+    .populate({
+      path: 'place',
+      populate: {
+        path: 'category',
+        model: 'category',
+      },
+    })
     .exec()
     .then(function (event) {
       if (!event) {
@@ -19,7 +26,13 @@ exports.params = function (req, res, next, id) {
 
 exports.get = function (req, res, next) {
   Event.find({})
-    .populate('place')
+    .populate({
+      path: 'place',
+      populate: {
+        path: 'category',
+        model: 'category',
+      },
+    })
     .exec()
     .then(function (events) {
       res.json(events);
