@@ -19,6 +19,7 @@ var PlaceSchema = new Schema({
   telephone: { type: String },
   description: { type: String },
   features: [{ type: String }],
+  fbLink: [{ type: String }],
   lng: { 
     type: Number,
     required: true
